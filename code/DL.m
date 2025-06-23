@@ -3,7 +3,7 @@ clc;clear;
 OffsetPos = 200;
 OffsetVal = 200;
 
-FileName = 'DL20201103_142426_100HZ采样率';
+FileName = 'DL20201103_142426_100HZ';
 fid=fopen([FileName,'.txt'],'r');
 FormatString=repmat('%s ',1,4);
 dat=textscan(fid,FormatString); 
@@ -82,8 +82,8 @@ hold on;
 plot(angle2,'g');
 hold on;
 plot(x,'b');
-title('转圈，角度偏差对比');
-legend('自制的芯片方案','买来的模块方案未被割部分','角度差*30+180');
+title('Rotate in circles and compare the Angle deviations');
+legend('The self-made chip solution, the uncut part of the purchased module solution, the Angle difference *30+18');
 
 
 return;
@@ -103,7 +103,7 @@ for i=2:length(angle)
 end
 
 plot(cha);
-title('转圈过程中，200ms采集一次，测量每隔200ms,实际转过的角度');
+title('During the rotation process, data is collected once every 200ms, and the actual rotation Angle is measured every 200ms');
 mean(cha)
 sum(cha)/5
 
@@ -111,13 +111,13 @@ return;
 
 t=[0:pi/180:2*pi];
 
-%FileName = '绑把柄上测试3';
-%FileName = '绑电池上测试3';
-%FileName = '重新绑把柄上测试3';
-FileName = '手动1';
+%FileName = 'Test on the binding handle 3';
+%FileName = 'Test on the battery 3';
+%FileName = 'Re-bind the handle and test 3';
+FileName = 'Manual 1';
 
 
-% 读取数据
+% Read data
 dat=importdata([FileName,'.txt']); 
 % GYRO_x = dat(:,1);
 % GYRO_y = dat(:,2);
@@ -170,20 +170,20 @@ figure;
 plot(Angle);
 hold on;
 plot(Filter_Angle);
-title([FileName, '   未滤波与滤波角度对比']);
+title([FileName, '   Comparison of unfiltered and filtered angles']);
 
 set(gcf,'outerposition',get(0,'screensize'));
-saveas(gcf, [FileName, '   未滤波与滤波角度对比'], 'png')
+saveas(gcf, [FileName, '   Comparison of unfiltered and filtered angles'], 'png')
 %close;
 
 figure;
 plot(Cha);
 hold on;
 plot(Filter_Cha);
-title([FileName, '   未滤波与滤波角度差对比']);
+title([FileName, '  Comparison of the Angle difference between unfiltered and filtered']);
 
 set(gcf,'outerposition',get(0,'screensize'));
-saveas(gcf, [FileName, '   未滤波与滤波角度差对比'], 'png')
+saveas(gcf, [FileName, '   Comparison of the Angle difference between unfiltered and filtered'], 'png')
 %close;
 
 return;
